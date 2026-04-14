@@ -30,5 +30,31 @@
 
 std::vector<std::pair<int,int>> compressRuns(const std::vector<int>& input)
 {
-    return std::vector<std::pair<int,int>>();
+    std::vector<std::pair<int,int>>() result;
+
+    if(input.empty()) return result; //for case 3, to handle overflow for empty vector
+
+    //we initialize pair (current, count) as 1st element of input and its least amount (which is 1)
+    int current = input[0]; 
+    int count = 1;         
+
+
+// Input:  {1,1,1,2,2,3,1,1}
+// Output: {{1,3}, {2,2}, {3,1}, {1,2}}
+
+    for (int i = 1; i < input.size(); ++i) {
+	// foreach element in the vector, if the element is same as previous, it increases
+        if (input[i] == current) {	
+            count++;
+        } else {
+	// else, it adds pair of previous  element and its count, and current element becomes a new one, which already exists once at least
+            result.emplace_back(current, count);
+            current= input[i];
+            count = 1;
+        }
+    }
+    //last element
+    result.emplace_back(current, count);
+
+    return result;
 }
