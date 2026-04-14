@@ -16,7 +16,7 @@ namespace Test
     constexpr const char* YELLOW = "\033[33m";
     constexpr const char* RESET = "\033[0m";
 
-    int testCase = 1;
+    int testCase = 0;
     int correctAnswers = 0;
 
     void Initialize()
@@ -28,7 +28,7 @@ namespace Test
     {
         std::cout << "\n\n";
 
-        if(testCase - 1 == correctAnswers)
+        if(testCase == correctAnswers)
         {
             std::cout << GREEN << "All Test Cases Passed";
         }
@@ -37,19 +37,19 @@ namespace Test
             std::cout << RED << "Failed To Pass All Test Cases";
         }
 
-        std::cout << ": [" << correctAnswers << "/" << testCase - 1 << "]\n\n" << RESET;
+        std::cout << ": [" << correctAnswers << "/" << testCase << "]\n\n" << RESET;
     }
 
     void PrintAnswer(const bool answer, std::string expected, std::string actual)
     {
         if(answer)
         {
-            std::cout << GREEN << "Passed [" << testCase++ << "]" << RESET << "\n";
+            std::cout << GREEN << "Passed [" << ++testCase << "]" << RESET << "\n";
             correctAnswers++;
         }
         else
         {
-            std::cout << RED << "Failed [" << testCase++ << "]" << RESET << " Expected: " << expected << " | Actual  : " << actual << "\n";
+            std::cout << RED << "Failed [" << ++testCase << "]" << RESET << " Expected: " << expected << " | Actual: " << actual << "\n";
         }
     }
 

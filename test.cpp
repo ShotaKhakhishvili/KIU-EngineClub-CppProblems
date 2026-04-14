@@ -1,4 +1,4 @@
-#include "Problems/14.04.26/CompressRuns/test_cases.cpp"
+#include "Problems/14.04.26/NormalizeStrings/test_cases.cpp"
 
 int main()
 {
