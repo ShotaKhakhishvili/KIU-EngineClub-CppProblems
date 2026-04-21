@@ -44,5 +44,48 @@
 
 std::string normalizeLine(const std::string& input)
 {
-    return std::string();
+   bool started = false;
+   bool makeUpper = true;
+   std::string result = "";
+
+   for (int i = 0; i < input.size(); i++){
+      char ch = input[i];
+
+      if (!isspace(ch) && isalnum(ch)){
+         started = true;
+      }
+      if (started){
+         if (i < input.size() - 1 && isspace(ch) && !isspace(input[i+1])){
+            result += " ";
+         } 
+         else if (ch == '!' || ch == '?' || ch == '.'){
+            if ((i == input.size() - 1) || (i < input.size() - 1 && input[i+1] != '!' && input[i+1] != '?' && input[i+1] != '.' && !isalnum(input[i+1]))){
+
+               result += ch;
+            }
+            makeUpper = true;
+         }
+         else if (isalpha(ch)){
+            if (makeUpper){
+               result += toupper(ch);
+               makeUpper = false;
+            }
+            else {
+               result += tolower(ch);
+            }
+         }
+         else if (isdigit(ch)){
+            result += ch;
+            makeUpper = false;
+         }
+      } 
+   }
+
+   if (result.size() == 0){
+      return "Empty";
+   }
+   else {
+      return result;
+   }
+   
 }
