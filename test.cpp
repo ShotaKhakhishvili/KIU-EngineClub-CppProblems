@@ -1,4 +1,4 @@
-#include "Problems/21.04.26/WindowMaximums/test_cases.cpp"
+#include "Problems/21.04.26/GradeClusters/test_cases.cpp"
 
 int main()
 {
