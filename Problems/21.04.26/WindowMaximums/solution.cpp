@@ -31,5 +31,23 @@ Constraints:
 
 std::vector<int> windowMaximums(const std::vector<int>& input, int k)
 {
-    return std::vector<int>();
+    std::vector<int> windowMaximums;
+
+    if (k > 0 && input.size() >= k){
+        for (auto i = input.begin(); i != input.end(); i++){
+            auto max = i;
+
+            if (input.end() - k < i){
+                break;
+            }
+            for (auto j = i+1; j < i + k; j++){
+                if (*j > *max){
+                    max = j;
+                }
+            }
+            windowMaximums.push_back(*max);
+        }
+    }
+
+    return windowMaximums;
 }
