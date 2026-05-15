@@ -1,4 +1,4 @@
-#include "Problems/05.05.26/ReverseArrayWindow/test_cases.cpp"
+#include "Problems/26.05.16/FlattenMatrix/test_cases.cpp"
 
 int main()
 {

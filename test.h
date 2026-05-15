@@ -97,4 +97,22 @@ namespace Test
     {
         PrintAnswer(!condition, "False", "True");
     }
+
+    template<typename T>
+    bool ArraysEqual(const T* left, const T* right, int size)
+    {
+        for (int i = 0; i < size; ++i)
+        {
+            if (*(left + i) != *(right + i))
+                return false;
+        }
+
+        return true;
+    }
+
+    template<typename T>
+    void AssertArrayEqual(const T* expected, const T* actual, int size)
+    {
+        AssertEqual(true, ArraysEqual(expected, actual, size));
+    }
 }
